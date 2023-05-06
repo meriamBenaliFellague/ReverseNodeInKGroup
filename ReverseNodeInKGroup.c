@@ -9,7 +9,7 @@ struct ListNode *head=NULL,*p,*q,*r;
 int ReadNumberOfNode();
 int ReadInput();
 int ReadNumberOfrevers();
-void AddNodeEnd(int y);
+void AddNodeEnd(int value);
 int length(struct ListNode *head);
 struct ListNode *reverseKGroup(int k,struct ListNode *head);
 void display(struct ListNode *head);
@@ -26,30 +26,30 @@ int main(){
 }
 
 int ReadNumberOfrevers()
-{int l;
+{int number1;
   printf("enter number of reverse: ");
-  scanf("%d",&l);
-  return l;
+  scanf("%d",&number1);
+  return number1;
 }
 
 int ReadNumberOfNode()
-{int b;
+{int number2;
   printf("enter the number of node: ");
-  scanf("%d",&b);
-  return b;
+  scanf("%d",&number2);
+  return number2;
 }
 
 int ReadInput()
-{int y;
+{int number3;
   printf("enter number: ");
-  scanf("%d",&y);
-  return y;
+  scanf("%d",&number3);
+  return number3;
 }
 
-void AddNodeEnd(int y)
+void AddNodeEnd(int value)
 {q=head;
   p=(struct ListNode*)malloc(sizeof(struct ListNode));
-  p->data=y;
+  p->data=value;
   if(head==NULL)
   {
     p->next=NULL;
@@ -67,15 +67,15 @@ void AddNodeEnd(int y)
 
 int length(struct ListNode *head){
 	if(head==NULL){
-		printf("The list is empty");
-		return -1;                 
+             printf("The list is empty");
+	     return -1;                 
 	}else{
-		p=head;int c=0;
-		while(p!=NULL){
-			c++;
+             p=head;int count=0;
+	     while(p!=NULL){
+	     count++;
 			p=p->next;
 		}
-		return c;
+		return count;
 	}
 }
 
@@ -94,8 +94,11 @@ struct ListNode *reverseKGroup(int k,struct ListNode *head){
 	}else{
 		if(k==1){
 			return head;
-		}else{int bol=0,d=k,f,h,count=0,c=0,w=k;q=head;p=head;
-			while(bol!=1){f=d;count=0;int count1=0;q=head;
+		}else{
+			int bol=0,d=k,f,h,count=0,c=0,w=k;
+			p=head;
+			while(bol!=1){
+			    f=d;count=0;q=head;
 			    while(count!=k/2){q=head;
 			    	for(int i=1;i<f;i++){
 					q=q->next;
