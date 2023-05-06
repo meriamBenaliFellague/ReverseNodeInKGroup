@@ -95,7 +95,7 @@ struct ListNode *reverseKGroup(int k,struct ListNode *head){
 		if(k==1){
 			return head;
 		}else{int bol=0,d=k,f,h,count=0,c=0,w=k;q=head;p=head;
-			while(bol!=1){f=d;count=0;q=head;
+			while(bol!=1){f=d;count=0;int count1=0;q=head;
 			    while(count!=k/2){q=head;
 			    	for(int i=1;i<f;i++){
 					q=q->next;
@@ -106,13 +106,13 @@ struct ListNode *reverseKGroup(int k,struct ListNode *head){
 				    p=p->next;
 				    f=f-1;
 				    count++;
-				}c+=count;w*=c;
+				}
 				if(length(head)-w<k){
 					bol=1;
 				}p=head;
 				for(int i=1;i<=d;i++){
 					p=p->next;
-				}d+=k;
+				}d+=k;w+=k;
 			}
 			return head;
 		}
