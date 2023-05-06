@@ -1,10 +1,12 @@
 #include<stdio.h>
 #include<stdlib.h>
+
 struct ListNode{
 	int data;
 	struct ListNode *next;
 };
-struct ListNode *head=NULL,*p,*q,*r;
+
+struct ListNode *head=NULL,*p,*q;
 
 int ReadNumberOfNode();
 int ReadInput();
@@ -54,11 +56,10 @@ void AddNodeEnd(int value)
   {
     p->next=NULL;
     head=p;
-  }else
-  {
+  }else{
     while(q->next!=NULL){
     	q=q->next;
-	}
+    }
 	q->next=p;
 	p->next=NULL;
   }
@@ -72,10 +73,10 @@ int length(struct ListNode *head){
 	}else{
              p=head;int count=0;
 	     while(p!=NULL){
-	     count++;
-			p=p->next;
-		}
-		return count;
+	              count++;
+		      p=p->next;
+	     }
+	     return count;
 	}
 }
 
@@ -101,23 +102,25 @@ struct ListNode *reverseKGroup(int k,struct ListNode *head){
 			    f=d;count=0;q=head;
 			    while(count!=k/2){q=head;
 			    	for(int i=1;i<f;i++){
-					q=q->next;
-				    }
-				    h=p->data;
-				    p->data=q->data;
-				    q->data=h;
-				    p=p->next;
-				    f=f-1;
-				    count++;
+				    q=q->next;
 				}
-				if(length(head)-w<k){
-					bol=1;
-				}p=head;
-				for(int i=1;i<=d;i++){
-					p=p->next;
-				}d+=k;w+=k;
+				h=p->data;
+				p->data=q->data;
+				q->data=h;
+				p=p->next;
+				f=f-1;
+				count++;
+			    }
+			   if(length(head)-w<k){
+				bol=1;
+			   }
+			   p=head;
+			   for(int i=1;i<=d;i++){
+			       p=p->next;
+			   }
+			   d+=k;w+=k;
 			}
-			return head;
-		}
+		   return head;
+	      }
 	}
 }
